@@ -19,7 +19,7 @@ body {
     width: 100%;
 }
 .chat-container {
-    width: 400px;
+    width: 800px;
     height: 500px;
     border: 1px solid #ccc;
     display: flex;
@@ -36,9 +36,27 @@ body {
     display: flex;
     align-items: center;
     padding: 10px;
+    background-color: #2b7777;
+
 }
 
 input[type="text"] {
     flex: 1;
     margin-right: 10px;
+}
+
+#startRecording {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #52ff13;
+    cursor: pointer;
+}
+
+#buttonEnviar {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #52ff13;
+    cursor: pointer;
+
+
 }
