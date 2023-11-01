@@ -1,9 +1,10 @@
 
 
 const startRecordingButton = document.getElementById('startRecording');
-
+const outputText = document.getElementById('user-input');
+var textospeech ="";
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-recognition.lang = 'pt-BR';
+recognition.lang = "pt-BR"; // Define o idioma para o reconhecimento de fala (português brasileiro, por exemplo)
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
@@ -14,35 +15,60 @@ var userInput = document.getElementById("user-input");
 userInput.addEventListener("keyup", function(event) {
     // Verifica se a tecla pressionada é a tecla "Enter"
     if (event.key === 'Enter') {
-        // Chama a função sendMessage() quando a tecla "Enter" é pressionada
-        sendMessage();
+        // Evita o comportamento padrão de "Enter" (enviar formulário)
+        event.preventDefault();
+        // Mantém o foco no campo de entrada após pressionar "Enter"
+        userInput.focus();
+        // Chama a função para enviar a mensagem (ou outra lógica, se desejado)
+        enviarMensagem();
     }
 });
 
-startRecordingButton.addEventListener('click', () => {
-    recognition.start();
+
+startRecordingButton.addEventListener("mousedown", () => {
+    startListening();
+});
+
+startRecordingButton.addEventListener("mouseup", () => {
+    stopListening();
+});
+
+function startListening() {
+    startRecordingButton.style.backgroundColor = "#f7210d";
 
     recognition.onresult = (event) => {
         const speechToText = event.results[0][0].transcript;
-        outputText.textContent = `Texto Reconhecido: ${speechToText}`;
-
+        textospeech = ` ${speechToText}`;
         // Enviar speechToText para o backend (por exemplo, via AJAX) para processamento com GPT.
         // Chame uma função que faz a requisição para a API do seu backend para processamento com GPT aqui.
     };
-
-    recognition.onerror = (event) => {
-        console.error('Erro de Reconhecimento de Fala:', event.error);
+    recognition.onerror = function(event) {
+        console.error("Erro de reconhecimento de fala: ", event.error);
     };
-});
+    recognition.start();    displayMessage(textospeech)
+
+
+}
+
+function stopListening() {
+    startRecordingButton.style.backgroundColor = "#52ff13";
+    recognition.stop(); // Para o reconhecimento de fala
+    displayMessage(textospeech)
 
 
 
+}
 
 
-function sendMessage() {
-    var userInput = document.getElementById("user-input").value;
+
+function sendMessage(message) {
+displayMessage(message) 
+
+}
+
+function displayMessage(userInput) {   
     var chatHistory = document.getElementById("chat-history");
-    
+
     // Adicione a mensagem do usuário ao histórico de conversas
     chatHistory.innerHTML += "<p><strong>Você:</strong> " + userInput + "</p>";
     
@@ -57,4 +83,17 @@ function sendMessage() {
     
     // Role para o final do histórico de conversas
     chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
+function enviarMensagem() {
+    var userInput = document.getElementById("user-input").value;
+    if (userInput.trim() !== "") {
+        // Se o campo de entrada não estiver vazio, envie a mensagem
+        displayMessage(userInput);
+        // Limpe o campo de entrada após enviar a mensagem (opcional)
+        document.getElementById("user-input").value = "";
+    } else {
+        // Se o campo de entrada estiver vazio, você pode exibir uma mensagem de erro ou fazer outra ação
+        console.log("Por favor, digite uma mensagem antes de enviar.");
+    }
 }
