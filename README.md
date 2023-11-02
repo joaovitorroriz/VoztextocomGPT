@@ -32,3 +32,6 @@
     git commit -m "Adicionar arquivo ubuntu2"
 # Envia as alterações do branch local para o repositório remoto na branch atual.
     git push
+
+# SpeechRecognition
+pip install SpeechRecognition openai
