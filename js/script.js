@@ -1,8 +1,7 @@
 
-
+let audioChunks = [];
 const startRecordingButton = document.getElementById('startRecording');
 const outputText = document.getElementById('user-input');
-var textospeech ="";
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 recognition.lang = "pt-BR"; // Define o idioma para o reconhecimento de fala (português brasileiro, por exemplo)
 recognition.interimResults = false;
@@ -21,43 +20,83 @@ userInput.addEventListener("keyup", function(event) {
         userInput.focus();
         // Chama a função para enviar a mensagem (ou outra lógica, se desejado)
         enviarMensagem();
+        console.log(data);
+
     }
 });
 
 
-startRecordingButton.addEventListener("mousedown", () => {
-    startListening();
-});
+navigator.mediaDevices.getUserMedia({ audio: true })
+  .then(function (stream) {
+    const mediaRecorder = new MediaRecorder(stream);
 
-startRecordingButton.addEventListener("mouseup", () => {
-    stopListening();
-});
+    mediaRecorder.ondataavailable = function (event) {
+      audioChunks.push(event.data);
+    };
 
-function startListening() {
+    mediaRecorder.onstop = function () {
+      const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+      const formData = new FormData();
+      formData.append('audio', audioBlob,'audio.wav');
+
+      fetch('/upload', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Faça algo com a resposta do servidor, se necessário
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Erro ao enviar áudio para o servidor:', error);
+        });
+
+      audioChunks = [];
+    };
+
+    startRecordingButton.addEventListener("mousedown", () => {
     startRecordingButton.style.backgroundColor = "#f7210d";
+    mediaRecorder.start();
+    });
 
-    recognition.onresult = (event) => {
-        const speechToText = event.results[0][0].transcript;
-        textospeech = ` ${speechToText}`;
-        // Enviar speechToText para o backend (por exemplo, via AJAX) para processamento com GPT.
-        // Chame uma função que faz a requisição para a API do seu backend para processamento com GPT aqui.
-    };
-    recognition.onerror = function(event) {
-        console.error("Erro de reconhecimento de fala: ", event.error);
-    };
-    recognition.start();    displayMessage(textospeech)
-
-
-}
-
-function stopListening() {
+    startRecordingButton.addEventListener("mouseup", () => {
     startRecordingButton.style.backgroundColor = "#52ff13";
-    recognition.stop(); // Para o reconhecimento de fala
-    displayMessage(textospeech)
+    mediaRecorder.stop();
+    });
+  })
+  .catch(function (err) {
+    console.error('Erro ao acessar o dispositivo de áudio:', err);
+  });
 
 
 
-}
+
+// startRecordingButton.addEventListener("mousedown", () => {
+//     startListening();
+// });
+// startRecordingButton.addEventListener("mouseup", () => {
+//     stopListening();
+// });
+// function startListening() {
+//     startRecordingButton.style.backgroundColor = "#f7210d";
+//     recognition.onresult = (event) => {
+//         const speechToText = event.results[0][0].transcript;
+//         var textospeech = ` ${speechToText}`;
+//         // Enviar speechToText para o backend (por exemplo, via AJAX) para processamento com GPT.
+//         // Chame uma função que faz a requisição para a API do seu backend para processamento com GPT aqui.
+//     };
+//     recognition.onerror = function(event) {
+//         console.error("Erro de reconhecimento de fala: ", event.error);
+//     };
+//     recognition.start();   
+//     // displayMessage(textospeech)
+// }
+// function stopListening() {
+//     startRecordingButton.style.backgroundColor = "#52ff13";
+//     recognition.stop(); // Para o reconhecimento de fala
+//     displayMessage(textospeech)
+// }
 
 
 
