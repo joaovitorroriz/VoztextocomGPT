@@ -35,7 +35,7 @@
 # Descarta as alterações não salvas em seus arquivos.
     git restore: 
 # Envia as alterações do branch local para o branch main no repositório remoto no GitHub.
-    git push origin main 
+    git push origin ubuntu2 
 # Cria e muda para uma nova branch chamada ubuntu2.
     git checkout -b ubuntu2:
 # Mostra o status das alterações na nova branch ubuntu2. 
