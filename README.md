@@ -7,6 +7,20 @@
 # Ativar o ambiente virtual:
     source venv/bin/activate   OU  deactivate
 
+
+# instalar node
+    sudo apt update
+    sudo apt install nodejs npm
+# Inicialize seu projeto Node.js:
+    npm init -y
+# Instale as dependências necessárias:
+    npm install node-record-lpcm16 wav
+    npm install node-microphone wav
+    npm install node-mic-record node-wav    
+    npm install node-record-lpcm16
+    npm install node-record-core node-wav
+    
+
 # Instale as dependências usando o requirements.txt:
     pip install -r requirements.txt
 # Atualize o requirements.txt
