@@ -35,8 +35,15 @@
 
 # SpeechRecognition
 pip install SpeechRecognition openai
+Empurrar Mudanças para o Repositório Remoto:
 
+  git push origin main.
 
 
 cadastre uma chave de acesso no site da openai 
 openai.api_key = os.getenv('OPENAI_API_KEY')
+
+
+google 
+pip install gtts
+pip install playsound

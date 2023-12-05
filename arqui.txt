@@ -1,11 +1,8 @@
 
 import os
 import openai
-from gtts import gTTS
-from playsound import playsound
-# Initialize the API key
 
-idioma = 'pt'
+# Initialize the API key
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def gerar_resposta(messages):
@@ -33,16 +30,7 @@ while True:
         print("user:", question)
         print("Sara:", answer[0], "\nCusto:\n", answer[1])
         mensagens.append({"role": "assistant", "content": answer[0]})
-        tts = gTTS(text=answer[0], lang=idioma, slow=False)
-        # Salvando o arquivo de áudio
-        arquivo_audio = "audio.mp3"
-        tts.save(arquivo_audio)
 
-        # Reproduzindo o arquivo de áudio
-        playsound(arquivo_audio)
-
-        # Opcional: remover o arquivo de áudio após a reprodução
-        os.remove(arquivo_audio)
     debugar = False
     if debugar:
         print("Mensagens", mensagens, type(mensagens))
