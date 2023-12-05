@@ -2,12 +2,15 @@ import speech_recognition as sr
 import pyttsx3
 import datetime
 import webbrowser
+import openai
 import os
+
 
 # iniciando text to speech
 engine = pyttsx3.init('espeak')  # Para windons #pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # func to speek text
 def speak(text):
