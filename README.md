@@ -36,8 +36,12 @@
 # SpeechRecognition
 pip install SpeechRecognition openai
 Empurrar Mudanças para o Repositório Remoto:
-
   git push origin main.
+
+
+adicionar todas as mudanças 
+    git add -A
+
 
 
 cadastre uma chave de acesso no site da openai 
