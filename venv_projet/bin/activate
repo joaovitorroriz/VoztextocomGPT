@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/lcad4-mestrado/Área de Trabalho/Artigo2/VoztextocomGPT/venv_projet"
+VIRTUAL_ENV="/home/lcad4-mestrado/Área de Trabalho/Trabalho IA/VoztextocomGPT/venv_projet"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -12,3 +12,13 @@ def ouvir_microfone():
             return "Não entendi"
 
 texto_ouvido = ouvir_microfone()
+
+
+from gtts import gTTS
+
+def texto_para_fala(texto, nome_arquivo):
+    tts = gTTS(texto, lang='pt-br')
+    tts.save(nome_arquivo)
+
+# Exemplo de uso
+texto_para_fala("Olá, mundo!", "ola_mundo.mp3")
