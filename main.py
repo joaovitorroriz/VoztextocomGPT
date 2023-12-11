@@ -75,6 +75,7 @@ def converter_audio_em_texto(nome_arquivo):
 
     # Inicializa o reconhecedor de fala
     r = sr.Recognizer()
+    
 
     # Carrega o arquivo de áudio
     with sr.AudioFile(nome_arquivo) as source:
