@@ -1,53 +1,82 @@
 
-#        Ambiente virtual
-# Instalar o virtualenv (se ainda não estiver instalado):
-    pip install virtualenv
-# Criar um novo ambiente virtual:
-    virtualenv venv
-# Ativar o ambiente virtual:
-    source venv/bin/activate   OU  deactivate
-
-# Instale as dependências usando o requirements.txt:
-    pip install -r requirements.txt
-# Atualize o requirements.txt
-    pip freeze > requirements.txt
-
-# Instalar o Flask:
-    pip install flask
-    pip install flask-cors
-
-# Lista todas as branches no repositório.
-    git branch
-# Descarta as alterações não salvas em seus arquivos.
-    git restore: 
-# Envia as alterações do branch local para o branch main no repositório remoto no GitHub.
-    git push origin main 
-# Cria e muda para uma nova branch chamada ubuntu2.
-    git checkout -b ubuntu2:
-# Mostra o status das alterações na nova branch ubuntu2. 
-    git status
-# Adiciona todas as alterações no diretório de trabalho ao índice para o próximo commit.
-    git add .
-# Confirma as alterações adicionadas ao índice com uma mensagem de commit específica.   
-    git commit -m "Adicionar arquivo ubuntu2"
-# Envia as alterações do branch local para o repositório remoto na branch atual.
-    git push
-
-# SpeechRecognition
-pip install SpeechRecognition openai
-Empurrar Mudanças para o Repositório Remoto:
-  git push origin main.
+# Assistente Virtual com Reconhecimento de Voz e Resposta Inteligente
+## Descrição
+Este projeto implementa um assistente virtual chamado "SARA" capaz de reconhecer voz, processar comandos de voz e responder utilizando a API da OpenAI (GPT-3.5-turbo). Ele grava áudio, converte em texto, envia para a API da OpenAI e reproduz a resposta em voz.
 
 
-adicionar todas as mudanças 
-    git add -A
+## Funcionalidades
+
+- Gravação de áudio via microfone.
+- Conversão de áudio para texto.
+- Integração com a API da OpenAI para geração de respostas inteligentes.
+- Conversão de texto para fala e reprodução de áudio.
 
 
+## Pré-requisitos
 
-cadastre uma chave de acesso no site da openai 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+- Python 3.x
+- Bibliotecas Python: pyaudio, wave, threading, os, openai, gtts, playsound, speech_recognition.
+- Chave de API da OpenAI.
+        
+
+## Instalação
+
+1- Clone o repositório:
+```bash
+git clone https://github.com/joaovitorroriz/VoztextocomGPT.git
+```
+2- Navegue até o diretório do repositório clonado.
+
+3- Instale as dependências.
+```bash
+pip install pyaudio wave threading os openai gtts playsound
+```
+    
+## Configuração da Chave da API OpenAI
+Antes de executar o código, você precisa configurar sua chave de API da OpenAI. Para isso:
+
+1- Visite OpenAI e crie uma conta (se ainda não tiver uma).
+
+2- Gere uma chave de API na sua conta OpenAI.
+
+3- Armazene a chave de API em uma variável de ambiente. No seu terminal/bash, execute:
+```bash
+export OPENAI_API_KEY='sua_chave_de_api_aqui'
+```
+
+## Execução
+Para executar o programa, siga estes passos:
+
+1- Clone o repositório:
+```bash
+git clone https://github.com/joaovitorroriz/VoztextocomGPT.git
+```
+2- Navegue até o diretório do projeto:
+```bash
+cd VoztextocomGPT
+```
+3- Execute o script:
+```bash
+python main.py
+```
+## Uso
+
+- Para gravar um áudio, pressione 'Enter' e comece a falar.
+- Pressione 'Enter' novamente para terminar a gravação.
+- O programa irá processar o áudio, enviar para a GPT e reproduzir a resposta.
+- Digite 'sair' para encerrar o programa.
 
 
-google 
-pip install gtts
-pip install playsound
+## Licença
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Autores
+
+- [@joaovitorrorize](https://www.github.com//joaovitorroriz)
+
+
+## Contribuições
+
+Contribuições são sempre bem-vindas. Sinta-se à vontade para clonar, forkar ou enviar pull requests.
