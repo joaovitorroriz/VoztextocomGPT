@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/lcad4-mestrado/Área de Trabalho/Trabalho IA/VoztextocomGPT/venv_projet/bin/python3" "$0" "$@"
+'''exec' "/home/lcad4-mestrado/Área de Trabalho/Trabalho_IA/VoztextocomGPT/venv_projet/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

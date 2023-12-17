@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/lcad4-mestrado/Área de Trabalho/Trabalho IA/VoztextocomGPT/venv_projet"
+set -gx VIRTUAL_ENV "/home/lcad4-mestrado/Área de Trabalho/Trabalho_IA/VoztextocomGPT/venv_projet"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

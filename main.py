@@ -132,7 +132,22 @@ while True:
         tts.save(arquivo_audio)
 
         # Reproduzindo o arquivo de áudio
-        playsound(arquivo_audio)
+        # playsound(arquivo_audio)
+        from pathlib import Path
+        from openai import OpenAI
+        client = OpenAI()
+
+        speech_file_path = Path(__file__).parent / "audio.mp3"
+        response = client.audio.speech.create(
+        model="tts-1",
+        voice="alloy",
+        input="Today is a wonderful day to build something people love!"
+        )
+
+        response.stream_to_file(speech_file_path)
+
+
+
 
         # Opcional: remover o arquivo de áudio após a reprodução
         os.remove(arquivo_audio)
