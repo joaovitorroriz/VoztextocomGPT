@@ -73,7 +73,7 @@ python main.py
 
 
 ## Autores
-
+Video do testef feito com o sistema.
 - [@joaovitorrorize](https://www.github.com//joaovitorroriz)
 
 ## Teste
