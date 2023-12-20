@@ -76,6 +76,10 @@ python main.py
 
 - [@joaovitorrorize](https://www.github.com//joaovitorroriz)
 
+## Teste
+[![Sistema de Conversão de Voz-Texto com GPT]()](https://youtu.be/QBWT2b3iVIA)
+
+
 
 ## Contribuições
 
