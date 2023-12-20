@@ -73,10 +73,11 @@ python main.py
 
 
 ## Autores
-Video do testef feito com o sistema.
 - [@joaovitorrorize](https://www.github.com//joaovitorroriz)
 
 ## Teste
+Video do teste feito com o sistema.
+
 [![Sistema de Conversão de Voz-Texto com GPT]()](https://youtu.be/QBWT2b3iVIA)
 
 
