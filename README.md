@@ -66,9 +66,10 @@ python main.py
 - O programa irá processar o áudio, enviar para a GPT e reproduzir a resposta.
 - Digite 'sair' para encerrar o programa.
 ## VITS 
-_ Para uso do VITS clone o repositório: e adicione sua base de teste na pasta data. 
+- Para uso do VITS clone o repositório: e adicione sua base de teste na pasta data. 
 
-```git clone https://github.com/ProgramadorArtificial/vits-portuguese.git
+```bash
+git clone https://github.com/ProgramadorArtificial/vits-portuguese.git
 ```
 
 
