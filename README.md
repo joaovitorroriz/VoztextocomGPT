@@ -68,7 +68,8 @@ python main.py
 ## VITS 
 _ Para uso do VITS clone o repositório: e adicione sua base de teste na pasta data. 
 
-git clone https://github.com/ProgramadorArtificial/vits-portuguese.git
+```git clone https://github.com/ProgramadorArtificial/vits-portuguese.git
+```
 
 
 
